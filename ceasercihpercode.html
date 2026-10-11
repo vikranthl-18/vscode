@@ -1,0 +1,170 @@
+
+Vikranth Lakkamaneni <lakkamaneni1301@students.d211.org>
+Fri, Jan 17, 8:20 AM (3 days ago)
+to me
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ceasar Cipher Project</title>
+    <style>
+        body {
+            
+            background-color: rgb(132, 193, 218);
+            text-align: center;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .custom2 {
+            text-align: center;
+            background-color: lightcoral;
+            width: 90%;
+            border: 5px solid black;
+            padding: 25px;
+            margin: auto;
+
+        }
+        
+
+        
+    </style>
+    <script>
+     
+        function encrypt(){
+ let input = document.getElementById("txt1Id").value;
+ let key = parseInt(document.getElementById("slt1Id").value);
+ input = input.toUpperCase();
+ let inputArray = input.split(""); 
+ 
+ let encrypt = "";
+ 
+
+for(let i = 0; i < input.length; i++){
+ encrypt  = input[i].charCodeAt(0);
+    if(encrypt >= 65 && encrypt <= 90){
+    encrypt = encrypt + key; 
+   
+    
+    if( encrypt > 90){
+        encrypt = encrypt - 26; 
+       
+     }
+     
+      encrypt = String.fromCharCode(encrypt); }
+      else {
+        encrypt = input[i];
+      }
+}
+
+
+
+ document.getElementById("div1Id").innerHTML = encrypt;
+ div1Id.style.backgroundColor = "rgb(240, 128, 128)";
+
+ 
+
+ 
+ }
+        function decrypt(){
+            let input = document.getElementById("txt1Id").value;
+            let key = parseInt(document.getElementById("slt1Id").value);
+            input = input.toUpperCase(); 
+            let inputArray = input.split("");
+            let decrypt = "";
+
+
+            for(let i = 0; i < input.length; i++){
+ decrypt  = input[i].charCodeAt(0);
+    if(decrypt >= 65 && decrypt <= 90){
+        decrypt = decrypt - key; 
+   
+    
+     
+     if( decrypt < 65){
+        decrypt = decrypt + 26; 
+       
+     }
+     decrypt = String.fromCharCode(decrypt); }
+     else{
+        decrypt = input[i];
+     }
+    }
+decrypt = decrypt.toLowerCase();
+     document.getElementById("div1Id").innerHTML = decrypt;
+ div1Id.style.backgroundColor = "rgb(00, 150, 00)";
+}
+
+        function randomkey(){
+ let selectbox = document.getElementById("slt1Id");
+ let randomkey = Math.floor(Math.random()*26) + 1;
+ selectbox.value = randomkey;
+
+ 
+ 
+
+        }
+         // Description: shows the game isntructions 
+        // Input/Parameters: bases on your guess 
+        // Output/Return: shows wether the guess is correct or wrong
+        // Citation: N/Az
+        function gameInstructions() {
+           let gameInstructions = "You may type in a set of letter or words to be converted to a key of your choice";
+           
+           if(document.getElementById("showInstructionsId").innerHTML = " "){
+            document.getElementById("showInstructionsId").innerHTML = gameInstructions;
+           }
+        
+        
+
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>Ceasar Cipher Project</h1>
+    <div id="showInstructionsId"></div>
+    <textarea rows="5" cols="50" id="txt1Id"></textarea>
+    <br><br><br>
+    key: <select value="1" id="slt1Id">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>
+        <option>17</option>
+        <option>18</option>
+        <option>19</option>
+        <option>10</option>
+        <option>21</option>
+        <option>22</option>
+        <option>23</option>
+        <option>24</option>
+        <option>25</option>
+        <option>26</option>
+    </select>
+    <br><br><br>
+    <input type="button" value="Encrypt" id="btn1Id" onclick="encrypt()">
+    <input type="button" value="Decrypt" id="btn2Id" onclick="decrypt()">
+    <br><br><br>
+    <input type="button" value="Pick Random Key" id="btn3Id" onclick="randomkey()">
+    <input type="button" value="Instructions" id="btn4Id" onclick="gameInstructions()">
+    <br><br><br>
+    <div id="div1Id" class="custom2"></div>
+
+
+</body>
+
+</html>
